@@ -13,6 +13,11 @@ Quarkus application that uses Camel routes
 </dependency>
 ```
 
+The implementation is basically this line of code,
+```java
+from("platform-http:/ping?httpMethodRestrict=GET").setBody().constant("pong").end();
+```
+
 1. For running `HttpPlatformRoute.java` please run:
 ```bash
 $ mvn clean compile quarkus:dev
