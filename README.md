@@ -39,6 +39,20 @@ curl -d '{ "key":"value" }' -H "Content-Type: application/json" -X POST localhos
 curl localhost:8080/objects
 ``` 
 
+### adding microprofile metrics support
+```xml
+<dependency>
+    <groupId>org.apache.camel.quarkus</groupId>
+    <artifactId>camel-quarkus-microprofile-metrics</artifactId>
+</dependency>
+```
+
+1. For fetching microprofile metrics, run the server and do,
+```bash
+curl localhost:8080/q/metrics
+```
+
 ### Links
 1. https://github.com/apache/camel-quarkus-examples/tree/master/rest-json
-2. https://camel.apache.org/components/latest/platform-http-component.html
+1. https://camel.apache.org/components/latest/platform-http-component.html
+1. https://camel.apache.org/camel-quarkus/latest/reference/extensions/microprofile-metrics.html
