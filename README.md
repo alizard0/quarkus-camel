@@ -1,21 +1,27 @@
 # quarkus-camel
 Quarkus application that uses Camel routes
 
-## platform-http
+## platform-http via Camel REST DSL
 > The Platform HTTP is used to allow Camel to use the existing HTTP server from the rumtime. For example when running Camel on Spring Boot, Quarkus, or other runtimes.
 
-```java
+```xml
 <dependency>
     <groupId>org.apache.camel</groupId>
     <artifactId>camel-platform-http</artifactId>
     <version>x.x.x</version>
-    <!-- use the same version as your Camel core version -->
 </dependency>
 ```
 
 The implementation is basically this line of code,
 ```java
-from("platform-http:/ping?httpMethodRestrict=GET").setBody().constant("pong").end();
+rest()
+    .get("/objects")
+    .route()
+    .setBody()
+    .constant(objects)
+    .marshal()
+    .json()
+.endRest();
 ```
 
 1. For running `HttpPlatformRoute.java` please run:
